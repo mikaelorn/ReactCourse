@@ -1,4 +1,5 @@
 var bookings = require("./controllers/bookings.js");
+var available = require("./controllers/available.js");
 
 var bodyParser = require("body-parser");
 var express = require("express");
@@ -27,7 +28,8 @@ app.get("/", function(req, res) {
 });
 
 app.get("/api/bookings", bookings.read);
-
+app.get("/api/available", available.read);
+app.post("/api/available", available.create);
 app.post("/api/bookings", bookings.create);
 
 http.listen(3000, function() {
